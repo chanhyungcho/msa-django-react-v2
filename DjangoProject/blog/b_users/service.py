@@ -4,9 +4,12 @@ import random
 import string
 from sqlalchemy import create_engine
 
+from exrc.algorithms.lambdas import lambda_string, lambda_k_name, lambda_number
+
+
 class B_userService(object):
     def __init__(self):
-        global engine#jdbc:mysql://localhost:3306/mydb
+        global engine #jdbc:mysql://localhost:3306/mydb
         engine = create_engine(
             "mysql+pymysql://root:root@localhost:3306/mydb",
             encoding='utf-8')
@@ -21,30 +24,34 @@ class B_userService(object):
                   index=False)
 
     def create_user(self) -> {}:
-        string_pool = string.ascii_lowercase
-        blog_userid = random.randint(9999,
-                                     99999)  # model의 dtype이 숫자인 AutoField로 돼있어서 임시로 수정되면 "blog_userid= ''.jo
-        # in(random.sample(string_pool, 5))"로 변경(email도 email = blog_userid + "@naver.com"로 변경)
-        email = str(blog_userid) + "@naver.com"
-        nickname = ''.join(random.sample(string_pool, 5))
-        password = 0
+        # string_pool = string.ascii_lowercase
+        # blog_userid = random.randint(9999,
+        #                              99999)  # model의 dtype이 숫자인 AutoField로 돼있어서 임시로 수정되면 "blog_userid= ''.jo
+        # # in(random.sample(string_pool, 5))"로 변경(email도 email = blog_userid + "@naver.com"로 변경)
 
-        nickname = models.TextField()
-        password = models.TextField()
+        email = str(lambda_string(4)) + "@naver.com"
+        nickname = lambda_k_name(2)
+        password = 0
+        print(email)
+        print(nickname)
+        print(password)
+        return email,nickname,password
+
+
+
 
     def create_users(self)-> []:
         n = 5
         email = ''
         golbang = '@google.com'
-        password = 1
-        nickname = 'NICK'
+        password = lambda_number(4)
+        nickname = lambda_k_name(2)
         data = []
         # email_list = list()
 
         for i in range(100):
-            for i in range(n):
-                email +=str(random.choice(string.ascii_letters))
-            email += golbang
+            str(lambda_string(4)) + "@naver.com"
+
             data.append([email,nickname,password])
             email=''
 
@@ -78,11 +85,14 @@ class B_userService(object):
 
 stroke_menu = ["Exit",  # 0
                "create_users",# 1
-               "show_csv" #2
+               "show_csv", #2
+               "create_user" #3
                ]
 stroke_lambda = {
     "1": lambda x: x.create_users(),
     "2": lambda x: x.insert_users(),
+    "3": lambda x: x.create_user(),
+
 
 }
 if __name__ == '__main__':

@@ -6,8 +6,8 @@ from blog.b_users.models import BUser
 class Post(models.Model):
     use_in_migrations = True
     post_id = models.AutoField(primary_key=True)
-    title = models.TextField()
-    content = models.TextField()
+    title = models.CharField(max_length=100)
+    content = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

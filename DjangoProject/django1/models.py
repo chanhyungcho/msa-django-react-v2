@@ -1,10 +1,12 @@
 from django.db import models
+
+from django.db import models
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.base_user import AbstractBaseUser
 
 from django.utils import timezone
 
-class User(models.Model):
+class aUser(models.Model):
     # These fields tie to the roles!
     ADMIN = 1
     MANAGER = 2
@@ -17,6 +19,7 @@ class User(models.Model):
     )
 
     use_in_migrations = True
+    user_id = models.AutoField(primary_key=True)
     user_email = models.CharField(max_length=20)
     password = models.CharField(max_length=20)
     user_name = models.CharField(max_length=20)
@@ -32,6 +35,6 @@ class User(models.Model):
         return f'{self.pk}'
 
     class Meta:
-        db_table = "users"
+        db_table = "ausers"
         verbose_name = 'user'
         verbose_name_plural = 'users'
