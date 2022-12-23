@@ -1,0 +1,18 @@
+table {
+  
+    background-color: rgba(61, 141, 165, 0.24);
+    width: 100%;
+   
+  }
+  table th {
+      border: 1px solid rgb(72, 130, 185);
+      background-color: rgba(1, 51, 75, 0.24);
+      text-align: center;
+        padding: 8px;
+  }
+  
+  table td {
+    border: 1px solid black;
+    text-align: left;
+    padding: 8px;
+  }
