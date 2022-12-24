@@ -43,7 +43,7 @@ Werkzeug==1.0.1
 wincertstore==0.2
 torch
 dlib
-cv2
+cv
 sklearn
 imblearn
 tensorflow_datasets
